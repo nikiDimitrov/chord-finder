@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Chord_Finder.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Chord_Finder;
 
@@ -18,7 +19,8 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+        builder.Services.AddSingleton<AppDbContext>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
