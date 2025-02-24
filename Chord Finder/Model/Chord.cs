@@ -14,7 +14,7 @@ namespace Chord_Finder.Model
         private Guid chordTypeID;
         private ChordType chordType;
 
-        private List<Note> notes;
+        private string notes;
 
         public Guid ID
         {
@@ -59,18 +59,14 @@ namespace Chord_Finder.Model
             }
         }
 
-        public List<Note> Notes
+        public string Notes
         {
             get { return notes; }
             set
             {
-                if(Notes.IsNullOrEmpty())
+                if(notes.IsNullOrEmpty())
                 {
                     throw new ArgumentNullException("Chord cannot have no notes!");
-                }
-                else if(Notes.Count < 2)
-                {
-                    throw new InvalidDataException("Chord cannot have fewer than 2 notes - it's not a chord!");
                 }
                 else
                 {
@@ -79,7 +75,7 @@ namespace Chord_Finder.Model
             }
         }
 
-        public Chord(string name, ChordType chordType, params Note[] notes)
+        public Chord(string name, ChordType chordType, string notes)
         {
             id = Guid.NewGuid();
             Name = name;
@@ -90,7 +86,7 @@ namespace Chord_Finder.Model
                 ChordTypeID = chordType.ID;
             }
 
-            Notes = notes.ToList();
+            Notes = notes;
         }
     }
 }
