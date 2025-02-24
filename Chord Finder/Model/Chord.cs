@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chord_Finder.Model
@@ -13,7 +14,7 @@ namespace Chord_Finder.Model
         private Guid chordTypeID;
         private ChordType chordType;
 
-        private string noteIds;
+        private List<Note> notes;
 
         public Guid ID
         {
@@ -58,30 +59,27 @@ namespace Chord_Finder.Model
             }
         }
 
-        public string NoteIds 
-        { 
-            get { return noteIds; } 
+        public List<Note> Notes
+        {
+            get { return notes; }
             set
             {
-                if(String.IsNullOrWhiteSpace(value))
+                if(Notes.IsNullOrEmpty())
                 {
-                    throw new ArgumentNullException("Notes cannot be null!");
+                    throw new ArgumentNullException("Chord cannot have no notes!");
+                }
+                else if(Notes.Count < 2)
+                {
+                    throw new InvalidDataException("Chord cannot have fewer than 2 notes - it's not a chord!");
                 }
                 else
                 {
-                    noteIds = value;
+                    notes = value;
                 }
             }
-        } 
-
-        [NotMapped]
-        public List<Guid> NoteIdList
-        {
-            get => NoteIds?.Split(',').Select(Guid.Parse).ToList() ?? new List<Guid>();
-            set => NoteIds = string.Join(",", value);
         }
 
-        public Chord(string name, ChordType chordType, params Guid[] noteIds)
+        public Chord(string name, ChordType chordType, params Note[] notes)
         {
             id = Guid.NewGuid();
             Name = name;
@@ -92,7 +90,7 @@ namespace Chord_Finder.Model
                 ChordTypeID = chordType.ID;
             }
 
-            NoteIdList = noteIds.ToList();
+            Notes = notes.ToList();
         }
     }
 }

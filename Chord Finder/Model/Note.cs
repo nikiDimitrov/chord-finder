@@ -53,5 +53,10 @@ namespace Chord_Finder.Model
             Name = name;
             Frequency = frequency;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Name}";
+        }
     }
 }
