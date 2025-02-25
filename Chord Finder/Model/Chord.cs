@@ -75,6 +75,20 @@ namespace Chord_Finder.Model
             }
         }
 
+        public Chord(Guid id, string name, ChordType chordType, string notes)
+        {
+            this.id = id;
+            Name = name;
+            ChordType = chordType;
+
+            if (chordType.ID != Guid.Empty)
+            {
+                ChordTypeID = chordType.ID;
+            }
+
+            Notes = notes;
+        }
+
         public Chord(string name, ChordType chordType, string notes)
         {
             id = Guid.NewGuid();

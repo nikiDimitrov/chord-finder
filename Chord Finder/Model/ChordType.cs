@@ -43,5 +43,12 @@ namespace Chord_Finder.Model
             Name = name;
             Description = description;
         }
+
+        public ChordType(Guid id, string name, string description)
+        {
+            this.id = id;
+            Name = name;
+            Description = description;
+        }
     }
 }

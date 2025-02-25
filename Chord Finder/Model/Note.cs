@@ -47,6 +47,13 @@ namespace Chord_Finder.Model
             }
         }
 
+        public Note(Guid id, string name, double frequency)
+        {
+            this.id = id;
+            Name = name;
+            Frequency = frequency;
+        }
+
         public Note(string name, double frequency)
         {
             id = Guid.NewGuid();
