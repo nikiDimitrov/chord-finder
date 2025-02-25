@@ -89,18 +89,44 @@ namespace Chord_Finder.Services
                 new Note("B8", 7902.13)
             );
 
+            ChordType major             = new ChordType("Major", "A chord with a root, major third, and perfect fifth.");
+            ChordType minor             = new ChordType("Minor", "A chord with a root, minor third, and perfect fifth.");
+            ChordType diminished        = new ChordType("Diminished", "A chord with a root, minor third, and diminished fifth.");
+            ChordType augmented         = new ChordType("Augmented", "A chord with a root, major third, and augmented fifth.");
+            ChordType dominantSeventh   = new ChordType("Dominant Seventh", "A chord with a root, major third, perfect fifth, and minor seventh.");
+            ChordType majorSeventh      = new ChordType("Major Seventh", "A chord with a root, major third, perfect fifth, and major seventh.");
+            ChordType minorSeventh      = new ChordType("Minor Seventh", "A chord with a root, minor third, perfect fifth, and minor seventh.");
+            ChordType halfDiminished    = new ChordType("Half-Diminished", "A chord with a root, minor third, diminished fifth, and minor seventh.");
+            ChordType diminishedSeventh = new ChordType("Diminished Seventh", "A chord with a root, minor third, diminished fifth, and diminished seventh.");
+            ChordType suspendedSecond   = new ChordType("Suspended Second", "A chord with a root, major second, and perfect fifth.");
+            ChordType suspendedFourth   = new ChordType("Suspended Fourth", "A chord with a root, perfect fourth, and perfect fifth.");
+
             modelBuilder.Entity<ChordType>().HasData(
-                new ChordType("Major", "A chord with a root, major third, and perfect fifth."),
-                new ChordType("Minor", "A chord with a root, minor third, and perfect fifth."),
-                new ChordType("Diminished", "A chord with a root, minor third, and diminished fifth."), 
-                new ChordType("Augmented", "A chord with a root, major third, and augmented fifth."),
-                new ChordType("Dominant Seventh", "A chord with a root, major third, perfect fifth, and minor seventh."),
-                new ChordType("Major Seventh", "A chord with a root, major third, perfect fifth, and major seventh."),
-                new ChordType("Minor Seventh", "A chord with a root, minor third, perfect fifth, and minor seventh."),
-                new ChordType("Half-Diminished", "A chord with a root, minor third, diminished fifth, and minor seventh."),
-                new ChordType("Diminished Seventh", "A chord with a root, minor third, diminished fifth, and diminished seventh."),
-                new ChordType("Suspended Second", "A chord with a root, major second, and perfect fifth."),
-                new ChordType("Suspended Fourth", "A chord with a root, perfect fourth, and perfect fifth.")
+                major, minor, diminished, augmented, dominantSeventh,
+                majorSeventh, minorSeventh, halfDiminished, diminishedSeventh,
+                suspendedSecond, suspendedFourth
+            );
+
+            modelBuilder.Entity<Chord>().HasData(
+                new Chord("C", major, "C-E-G"),
+
+                new Chord("Dm", minor, "D-F-A"),
+                new Chord("Dm7", minorSeventh, "D-F-A-C"),
+
+                new Chord("Em", minor, "E-G-B"),
+                new Chord("Em7", minorSeventh, "E-G-B-D"),
+
+                new Chord("F", major, "F-A-C"),
+                new Chord("Fmaj7", majorSeventh, "F-A-C-E"),
+
+                new Chord("G", major, "G-B-D"),
+                new Chord("G7", dominantSeventh, "G-B-D-F"),
+
+                new Chord("Am", minor, "A-C-E"),
+                new Chord("Am7", minorSeventh, "A-C-E-G"),
+
+                new Chord("Bdim", diminished, "B-D-F"),
+                new Chord("Bø7", halfDiminished, "B-D-F-A")
             );
         }
     }

@@ -8,7 +8,7 @@ namespace Chord_Finder.Model
         private Guid id;
         private string name;
         private double frequency;
-
+        
         public Guid ID
         {
             get { return id; }
