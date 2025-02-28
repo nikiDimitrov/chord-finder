@@ -1,12 +1,12 @@
-﻿namespace Chord_Finder.Helpers
+﻿using Chord_Finder.Model;
+using System.Text.RegularExpressions;
+
+namespace Chord_Finder.Helpers
 {
+    using static Globals;
+
     public class NoteTransposer
     {
-        private static readonly List<string> chromaticScale = new List<string>()
-        {
-            "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"
-        };
-
         public static string Transpose(string note, int semitones)
         {
             int index = chromaticScale.IndexOf(note);
@@ -21,16 +21,31 @@
             return chromaticScale[newIndex];
         }
 
-        public static List<string> TransposeChord(List<string> chordNotes, int semitones)
+        public static Chord TransposeChord(Chord chordToTranspose, int semitones)
         {
-            List<string> transposedChord = new List<string>();
+            //transpose notes
+            List<string> transposedNotesList = new List<string>();
 
-            foreach (var note in chordNotes)
+            List<string> chordNotesSplit = chordToTranspose.Notes.Split('-').ToList();
+
+            foreach (var note in chordNotesSplit)
             {
-                transposedChord.Add(Transpose(note, semitones));
+                transposedNotesList.Add(Transpose(note, semitones));
             }
 
-            return transposedChord;
+            string transposedNotes = string.Join('-', transposedNotesList);
+
+            string newChordName;
+            if(chordToTranspose.Name.Length > 1)
+            {
+                newChordName = $"{transposedNotesList[0]}{chordToTranspose.Name.Skip(1)}";
+            }
+            else
+            {
+                newChordName = $"{transposedNotesList[0]}";
+            }
+
+            return new Chord(newChordName, chordToTranspose.ChordType, transposedNotes);
         }
     }
 }
