@@ -1,8 +1,8 @@
-﻿using Chord_Finder.Model;
-using Chord_Finder.Services;
+﻿using Chord_Finder_Core.Model;
+using Chord_Finder_Core.Services;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Chord_Finder.Helper
+namespace Chord_Finder_Core.Helper
 {
     public static class NotesStringToListHelper
     {

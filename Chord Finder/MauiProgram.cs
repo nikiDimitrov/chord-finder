@@ -1,4 +1,4 @@
-﻿using Chord_Finder.Services;
+﻿using Chord_Finder_Core.Services;
 using Microsoft.Extensions.Logging;
 
 namespace Chord_Finder;
