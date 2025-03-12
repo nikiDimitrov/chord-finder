@@ -1,9 +1,8 @@
-﻿using Chord_Finder.Model;
-using Chord_Finder.Services;
+﻿using Chord_Finder_Core.Model;
+using Chord_Finder_Core.Services;
 using System.Text.RegularExpressions;
-using System.Linq;
 
-namespace Chord_Finder.Helpers
+namespace Chord_Finder_Core.Helpers
 {
     using static Globals;
     public class ChordTracker

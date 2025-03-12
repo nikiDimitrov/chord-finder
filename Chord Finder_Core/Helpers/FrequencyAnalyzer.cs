@@ -1,7 +1,7 @@
 ﻿using MathNet.Numerics.IntegralTransforms;
 using System.Numerics;
 
-namespace Chord_Finder.Helpers
+namespace Chord_Finder_Core.Helpers
 {
     public static class FrequencyAnalyzer
     {

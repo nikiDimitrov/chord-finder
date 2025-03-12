@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace Chord_Finder.Helpers
+﻿namespace Chord_Finder_Core.Helpers
 {
     public static class Globals
     {
@@ -15,6 +8,10 @@ namespace Chord_Finder.Helpers
         };
 
         internal static string noteRegexPattern = "[^1-9]";
+        internal static string chordNameWithoutRootRegexPattern = "[^(A-G)#|b\\/(A-G)#|b]+";
 
+        internal static string notePrefix = "Note";
+        internal static string chordTypePrefix = "CType";
+        internal static string chordPrefix = "Chord";
     }
 }

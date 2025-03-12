@@ -1,12 +1,14 @@
-﻿using Chord_Finder.Model;
+﻿using Chord_Finder_Core.Model;
 using System.Text.RegularExpressions;
 
-namespace Chord_Finder.Helpers
+namespace Chord_Finder_Core.Helpers
 {
     using static Globals;
 
     public class NoteTransposer
     {
+        private static Regex chordNameWithoutRootRegex = new Regex(chordNameWithoutRootRegexPattern);
+
         public static string Transpose(string note, int semitones)
         {
             int index = chromaticScale.IndexOf(note);
@@ -35,17 +37,19 @@ namespace Chord_Finder.Helpers
 
             string transposedNotes = string.Join('-', transposedNotesList);
 
+            string oldChordName = chordToTranspose.Name;
             string newChordName;
-            if(chordToTranspose.Name.Length > 1)
+
+            if (chordToTranspose.Name.Length > 1)
             {
-                newChordName = $"{transposedNotesList[0]}{chordToTranspose.Name.Skip(1)}";
+                newChordName = transposedNotesList[0] + chordNameWithoutRootRegex.Match(oldChordName).Value;
             }
             else
             {
                 newChordName = $"{transposedNotesList[0]}";
             }
 
-            return new Chord(newChordName, chordToTranspose.ChordType, transposedNotes);
+            return new Chord(newChordName, chordToTranspose.ChordTypeID, transposedNotes);
         }
     }
 }

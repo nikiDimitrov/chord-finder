@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
 
-namespace Chord_Finder.Helpers
+namespace Chord_Finder_Core.Helpers
 {
     public static class AudioProcessor
     {

@@ -1,12 +1,4 @@
-﻿using Chord_Finder.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace Chord_Finder.Helpers
+﻿namespace Chord_Finder_Core.Helpers
 {
     using static Globals;
 
