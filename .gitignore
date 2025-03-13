@@ -3,8 +3,10 @@
 ################################################################################
 
 /.vs
-/Chord Finder/.vs
-/Chord Finder/bin
-/Chord Finder/obj
-/Chord Finder_Core/bin
-/Chord Finder_Core/obj
+/Chord_Finder/.vs
+/Chord_Finder/bin
+/Chord_Finder/obj
+/Chord_Finder_Core/bin
+/Chord_Finder_Core/obj
+/Chord_Finder_Tests/bin
+/Chord_Finder_Tests/obj
