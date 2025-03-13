@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Chord_Finder_Core.Model
+﻿namespace Chord_Finder_Core.Model
 {
     public class Note
     {
@@ -15,7 +13,7 @@ namespace Chord_Finder_Core.Model
 
         public Note(string name, double frequency, Guid? id = null)
         {
-            ID = id ?? Guid.NewGuid();
+            ID = id ?? Guid.Empty;
             Name = name;
             Frequency = frequency;
         }

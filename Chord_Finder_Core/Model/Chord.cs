@@ -1,7 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-
-
-namespace Chord_Finder_Core.Model
+﻿namespace Chord_Finder_Core.Model
 {
     public class Chord
     {
@@ -9,7 +6,7 @@ namespace Chord_Finder_Core.Model
         public Guid ID { get; set; }
         public string Name { get; set; }
         public Guid ChordTypeID { get; set; }
-        public ChordType ChordType { get; set; }
+        public virtual ChordType ChordType { get; set; }
 
         public string Notes { get; set; }
 
@@ -17,11 +14,12 @@ namespace Chord_Finder_Core.Model
         {
             
         }
-        public Chord(string name, ChordType chordType, string notes, Guid? id = null)
+
+        public Chord(string name, Guid chordTypeID, string notes, Guid? id = null)
         {
-            ID = id ?? Guid.NewGuid();
+            ID = id ?? Guid.Empty;
             Name = name;
-            ChordType = chordType;
+            ChordTypeID = chordTypeID;
             Notes = notes;
         }
     }
